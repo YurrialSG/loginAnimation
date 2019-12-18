@@ -67,10 +67,10 @@ form .btn-login {
   padding: 7px;
 }
 
-/* APARIÇÃO DO FORM */
+/* Aparição do Form */
 form {
-  overflow: hidden;
   animation: fade 0.2s;
+  overflow: hidden;
 }
 
 form .input-block:nth-child(1) {
@@ -89,17 +89,6 @@ form .btn-login {
   animation-fill-mode: backwards;
 }
 
-@keyframes move {
-  from {
-    opacity: 0;
-    transform: translateX(-35%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0%);
-  }
-}
-
 @keyframes fade {
   from {
     opacity: 0;
@@ -111,9 +100,24 @@ form .btn-login {
   }
 }
 
+@keyframes move {
+  from {
+    opacity: 0;
+    transform: translateX(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
 /* Quando clicar no botão, sumir com o form */
 .form-hide {
-  animation: down 500ms forwards;
+  animation: down 1.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  /* animation-timing-function: cubic-bezier(0, 1.2, 0.6, 0.2); */
+  /* animation-timing-function: steps(2); */
 }
 
 @keyframes down {
@@ -122,5 +126,54 @@ form .btn-login {
   }
   to {
     transform: translateY(100vh);
+  }
+}
+
+/*Form animação não não (vibrar)*/
+form.validate-error {
+  animation: nono 200ms linear, fade paused;
+  animation-iteration-count: 2;
+}
+
+
+@keyframes nono {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(-15%);
+  }
+  70% {
+    transform: translateX(15%);
+  }
+}
+
+/* squares background */
+body {
+  overflow: hidden;
+}
+
+.squares li {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: block;
+  position: absolute;
+  bottom: -40px;
+  animation: background 2s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes background {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-800px) rotate(960deg);
   }
 }
